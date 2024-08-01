@@ -7,12 +7,12 @@
  * @noflow
  * @nolint
  * @preventMunge
- * @generated SignedSource<<70206101dd639f59762f553d407d3019>>
+ * @generated SignedSource<<74fdaeec84a32381970ae41dea2d20da>>
  */
 
 "use strict";
-var enableFastJSX = require("ReactNativeInternalFeatureFlags").enableFastJSX,
-  REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
+require("ReactNativeInternalFeatureFlags");
+var REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
   REACT_PORTAL_TYPE = Symbol.for("react.portal"),
   REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"),
   REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"),
@@ -82,9 +82,7 @@ assign(pureComponentPrototype, Component.prototype);
 pureComponentPrototype.isPureReactComponent = !0;
 var isArrayImpl = Array.isArray,
   ReactSharedInternals = { H: null, A: null, T: null, S: null },
-  hasOwnProperty = Object.prototype.hasOwnProperty,
-  enableFastJSXWithStringRefs = enableFastJSX && !0,
-  enableFastJSXWithoutStringRefs = enableFastJSXWithStringRefs && !0;
+  hasOwnProperty = Object.prototype.hasOwnProperty;
 function ReactElement(type, key, _ref, self, source, owner, props) {
   _ref = props.ref;
   return {
@@ -99,11 +97,7 @@ function jsxProd(type, config, maybeKey) {
   var key = null;
   void 0 !== maybeKey && (key = "" + maybeKey);
   void 0 !== config.key && (key = "" + config.key);
-  if (
-    (!enableFastJSXWithoutStringRefs &&
-      (!enableFastJSXWithStringRefs || "ref" in config)) ||
-    "key" in config
-  ) {
+  if ("key" in config) {
     maybeKey = {};
     for (var propName in config)
       "key" !== propName && (maybeKey[propName] = config[propName]);
@@ -522,6 +516,9 @@ exports.unstable_getCacheForType = function (resourceType) {
 exports.unstable_useCacheRefresh = function () {
   return ReactSharedInternals.H.useCacheRefresh();
 };
+exports.unstable_useContextWithBailout = function () {
+  throw Error("Not implemented.");
+};
 exports.unstable_useMemoCache = useMemoCache;
 exports.use = function (usable) {
   return ReactSharedInternals.H.use(usable);
@@ -583,4 +580,4 @@ exports.useSyncExternalStore = function (
 exports.useTransition = function () {
   return ReactSharedInternals.H.useTransition();
 };
-exports.version = "19.0.0-native-fb-1d5a208f-20240715";
+exports.version = "19.0.0-native-fb-4ea12a11-20240801";
